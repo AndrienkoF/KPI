@@ -41,3 +41,4 @@ Animation types:
 - Обертання навколо центру малюнка за годинниковою стрілкою
 
 ### Result:
+![lab2_img1](https://user-images.githubusercontent.com/14183373/37541381-17873434-2963-11e8-93ae-155f9fccab12.png)
