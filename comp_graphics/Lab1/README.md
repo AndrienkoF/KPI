@@ -1,7 +1,7 @@
 # Laboratory work №1
-### **Task:** Create a picture by option using graphic primitives in the JavaFX library.
+#### **Task:** Create a picture by option using graphic primitives in the JavaFX library.
 
-#### **Creating individual primitives:**
+### **Creating individual primitives:**
 
 1. **Line:**
       ```
@@ -89,3 +89,5 @@
       ellipse.setRadiusY(25.0f);
       ```
       
+### Result:
+![lab1_img1](https://user-images.githubusercontent.com/14183373/37540722-b7aa47e2-2960-11e8-988e-9fefd6139199.png)
