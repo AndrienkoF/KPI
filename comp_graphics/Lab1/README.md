@@ -1,4 +1,4 @@
-# Laboratory work №1
+# Lab №1
 #### **Task:** Create a picture by option using graphic primitives in the JavaFX library.
 
 ### **Creating individual primitives:**
