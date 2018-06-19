@@ -14,7 +14,7 @@ class ItemXML():
             fragment = root.find(".//page[@url='" +item.url+ "']")
             ET.SubElement(fragment, "fragment", title=item.title, type="text").text = item.text
         else:
-            fragment = ET.SubElement(root, "page", url=item.url, name=item.categoryName)
+            fragment = ET.SubElement(root, "page", url=item.url, name=item.categoryName, id=item.pageId)
             ET.SubElement(fragment, "summary", type="text").text = item.summary
             ET.SubElement(fragment, "fragment", title=item.title, type="text").text = item.text
         tree = ET.ElementTree(root)

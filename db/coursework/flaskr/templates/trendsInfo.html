@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="col-md-5">
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+  <script>
+    //line
+    var ctxL = document.getElementById("lineChart").getContext('2d');
+    var myLineChart = new Chart(ctxL, {
+        type: 'line',
+        data: {
+            labels: ["Januarysd", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "Количество просмотров",
+                    fillColor: "rgba(8, 0, 162, 1)",
+                    strokeColor: "rgba(39, 59, 241, 1)",
+                    pointColor: "rgba(8, 0, 162, 1)",
+                    pointStrokeColor: "#ff0000",
+                    pointHighlightFill: "#ff0000",
+                    pointHighlightStroke: "rgba(39, 59, 241, 1)",
+                    data: [65, 59, 80, 81, 56, 55, 40]
+                }
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    });
+  </script>
+</body>
+
+</html>
