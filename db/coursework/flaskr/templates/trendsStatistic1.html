@@ -19,23 +19,16 @@
 <body>
   <div class="conteiner">
     <div class="row">
-      <div class="col" style="margin-top:150px; margin-left:150px;">
-        <b>ID:</b> {{response.id}} <br>
-        <b>Дата создания:</b> {{response.date}} <br>
-        <b>Количество просмотров:</b> {{response.views}} <br>
-        <b>Описание канала:</b>
-        <ul>
-          <li><b>ID:</b> {{response.channel.id}} <br></li>
-          <li><b>Дата создания канала:</b> {{response.channel.date}} <br></li>
-          <li><b>Количество подпищиков:</b> {{response.channel.subs}}</li>
-        </ul>
-
+      <div class="col" style="margin-top:10px; margin-left:50px;">
+        <form class="form-inline active-green-4" method="post" action="/trend_stat"
+        style="margin-top:10px; margin-right:10px;">
+            <label for="year">Статистика за год:</label>
+            <input class="form-control form-control-sm ml-3 w-20" type="number"
+            min="2016" max="2018" name="year" id="year" value="2016"
+            placeholder="Статистика за год" aria-label="">
+            <input type="submit" class="btn btn-sm btn-success" value='Загрузить'/>
+        </form>
       </div>
-      {% if response%}
-      <div class="col-md-8">
-        <canvas id="pieChart"></canvas>
-      </div>
-      {%endif%}
     </div>
   </div>
   <!-- SCRIPTS -->
@@ -48,27 +41,6 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="/static/js/mdb.min.js"></script>
 
-  <script>
-    //pie
-    var ctxP = document.getElementById("pieChart").getContext('2d');
-    var myPieChart = new Chart(ctxP, {
-      type: 'pie',
-      data: {
-        labels: ["Likes", "Dislikes"],
-        datasets: [
-          {
-            data: [{{response.dislikes}}, {{response.likes}}],
-            backgroundColor: ["#09e23f", "#FF5A5E"],
-            hoverBackgroundColor: ["#09e23f", "#FF5A5E"]
-          }
-        ]
-      },
-      options: {
-          responsive: true
-      }
-    });
-
-  </script>
 </body>
 
 </html>

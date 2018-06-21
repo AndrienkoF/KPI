@@ -29,21 +29,28 @@
         <div class="dropdown">
           <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Статистика трендов YouTube за год
+            Графическая статистика трендов YouTube
           </button>
           <div class="dropdown-menu dropdown-success">
-            <a class="dropdown-item" href="#" style="width: 332px;" data-toggle="modal" data-target="#trends2016">2016</a>
+            <a class="dropdown-item" href="#" style="width: 380px;" data-toggle="modal" data-target="#trends2016">2016</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#trends2017">2017</a>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#trends2018">2018</a>
           </div>
         </div>
       </div>
       <div class="col">
+        <a href="/trend_stat" class="btn btn-success" type="button" id="dropdownMenu1"
+          aria-haspopup="true" aria-expanded="false">
+          Статистика трендов YouTube за год
+        </a>
       </div>
       <div class="col">
-        <form class="form-inline active-green-4" style="margin-top:10px; margin-right:10px;">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Поиск видео по ID" aria-label="Search">
+        <form class="form-inline active-green-4" method="post" action="/"
+        style="margin-top:10px; margin-right:10px;">
+            <input class="form-control form-control-sm ml-3 w-50" type="text"
+            name="video_id" id="video_id"
+            placeholder="Поиск видео по ID" aria-label="Search">
+            <input type="submit" class="btn btn-sm btn-success" value='Поиск'/>
         </form>
       </div>
     </div>
@@ -54,7 +61,7 @@
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Количество просмотров за 2016</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -63,7 +70,7 @@
                 <canvas id="lineChart2016"></canvas>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
               </div>
           </div>
       </div>
@@ -73,7 +80,7 @@
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabe2">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabe2">Количество просмотров за 2017</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -82,7 +89,7 @@
                 <canvas id="lineChart2017"></canvas>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
               </div>
           </div>
       </div>
@@ -92,7 +99,7 @@
       <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabe3">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabe3">Количество просмотров за 2018</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                   </button>
@@ -101,7 +108,7 @@
                 <canvas id="lineChart2018"></canvas>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
               </div>
           </div>
       </div>
@@ -122,17 +129,31 @@
     var myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Январь", "Февраль", "Март", "Апрель",	"Май", "Июнь", "Июль", "Август",
+            "Сентябрь",	"Октябрь", "Ноябрь",	"Декабрь"],
             datasets: [
                 {
-                    label: "Количество просмотров",
+                    label: "Скрыть",
                     fillColor: "rgba(8, 0, 162, 1)",
                     strokeColor: "rgba(39, 59, 241, 1)",
                     pointColor: "rgba(8, 0, 162, 1)",
                     pointStrokeColor: "#ff0000",
                     pointHighlightFill: "#ff0000",
                     pointHighlightStroke: "rgba(39, 59, 241, 1)",
-                    data: [{{test}}, 59, 80, 81, 56, 55, 40]
+                    data: [
+                      {{response.all_views[0]}},
+                      {{response.all_views[1]}},
+                      {{response.all_views[2]}},
+                      {{response.all_views[3]}},
+                      {{response.all_views[4]}},
+                      {{response.all_views[5]}},
+                      {{response.all_views[6]}},
+                      {{response.all_views[7]}},
+                      {{response.all_views[8]}},
+                      {{response.all_views[9]}},
+                      {{response.all_views[10]}},
+                      {{response.all_views[11]}}
+                    ]
                 }
             ]
         },
@@ -147,17 +168,31 @@
     var myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Январь", "Февраль", "Март", "Апрель",	"Май", "Июнь", "Июль", "Август",
+            "Сентябрь",	"Октябрь", "Ноябрь",	"Декабрь"],
             datasets: [
                 {
-                    label: "Количество просмотров",
+                    label: "Скрыть",
                     fillColor: "rgba(8, 0, 162, 1)",
                     strokeColor: "rgba(39, 59, 241, 1)",
                     pointColor: "rgba(8, 0, 162, 1)",
                     pointStrokeColor: "#ff0000",
                     pointHighlightFill: "#ff0000",
                     pointHighlightStroke: "rgba(39, 59, 241, 1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: [
+                      {{response.all_views[12]}},
+                      {{response.all_views[13]}},
+                      {{response.all_views[14]}},
+                      {{response.all_views[15]}},
+                      {{response.all_views[16]}},
+                      {{response.all_views[17]}},
+                      {{response.all_views[18]}},
+                      {{response.all_views[19]}},
+                      {{response.all_views[20]}},
+                      {{response.all_views[21]}},
+                      {{response.all_views[22]}},
+                      {{response.all_views[23]}}
+                    ]
                 }
             ]
         },
@@ -172,17 +207,25 @@
     var myLineChart = new Chart(ctxL, {
         type: 'line',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Январь", "Февраль", "Март", "Апрель",	"Май", "Июнь", "Июль", "Август",
+            "Сентябрь",	"Октябрь", "Ноябрь",	"Декабрь"],
             datasets: [
                 {
-                    label: "Количество просмотров",
+                    label: "Скрыть",
                     fillColor: "rgba(8, 0, 162, 1)",
                     strokeColor: "rgba(39, 59, 241, 1)",
                     pointColor: "rgba(8, 0, 162, 1)",
                     pointStrokeColor: "#ff0000",
                     pointHighlightFill: "#ff0000",
                     pointHighlightStroke: "rgba(39, 59, 241, 1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: [
+                      {{response.all_views[24]}},
+                      {{response.all_views[25]}},
+                      {{response.all_views[26]}},
+                      {{response.all_views[27]}},
+                      {{response.all_views[28]}},
+                      {{response.all_views[29]}}
+                    ]
                 }
             ]
         },
