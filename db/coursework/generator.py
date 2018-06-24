@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
 
     # CREATED VIDEOS
-    # for i in range(1000000):
+    # for i in range(10000):
     #     video = {"date_created": randomDate("12/06/2015", "12/06/2018", random.random()),
     #                 "likes": random.randint(1,50000),
     #                 "dislikes": random.randint(1,500000),
